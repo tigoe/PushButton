@@ -1,0 +1,125 @@
+= Pushbutton Library for Arduino =
+
+This library allows you to read pushbutton state changes easier. There are dozens of these on the internet, but none of them had the features I wanted, or the cross-architecture compatibility, so I wrote my own.
+
+
+= Commands =
+
+
+== PushButton
+
+.Syntax
+----
+`PushButton myButton(pinNumber);`
+----
+
+.Parameters
+pinNumber
+
+.Returns
+void
+
+.Notes
+Creates a new pushbutton called `myButton` on pin `pinNumber`.
+
+== begin
+
+.Syntax
+----
+`myButton.begin(pinMode);`
+----
+
+.Parameters
+pinMode - the button's I/O pinMode, either INPUT or INPUT_PULLUP 
+
+.Returns
+void
+
+.Notes
+Sets the pinMode for the button, and also the pressed and released states. For pinMode INPUT_PULLUP, pressedState is LOW and releasedState is HIGH. For pinMode INPUT, they're reversed.
+
+
+== setDebounce
+
+.Syntax
+----
+`myButton.setDebounce(debounceDelay);`
+----
+
+.Parameters
+debounceDelay 
+
+.Returns
+void
+
+.Notes
+sets the delay before reading in `read()`, `changed()`, `pressed()` and `released()`, in milliseconds. Different buttons will have different debounce needs, but 2-10ms seems to cover most of them.
+
+
+== read
+
+.Syntax
+----
+`myButton.read();`
+----
+
+.Parameters
+none 
+
+.Returns
+1 or 0, HIGH or LOW
+
+.Notes
+reads the state of the button, and also sets the changed state. If the current read is different than the previous read, then `changed` is set to true.
+
+== changed
+
+.Syntax
+----
+`myButton.changed();`
+----
+
+.Parameters
+none 
+
+.Returns
+true or false
+
+.Notes
+reads the state of the button, and returns `true` if the button has changed since last read.
+
+== pressed
+
+.Syntax
+----
+`myButton.pressed();`
+----
+
+.Parameters
+none 
+
+.Returns
+true or false
+
+.Notes
+reads the state of the button, and returns `true` if the button has changed to a pressed state. This state is dependent on the pinMode, see `begin` above.
+
+== released
+
+.Syntax
+----
+`myButton.released();`
+----
+
+.Parameters
+none 
+
+.Returns
+true or false
+
+.Notes
+reads the state of the button, and returns `true` if the button has changed to a released state. This state is dependent on the pinMode, see `begin` above.
+
+== License ==
+
+See LICENSE document for details.
