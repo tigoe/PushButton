@@ -8,116 +8,116 @@ This library allows you to read pushbutton state changes easier. There are dozen
 
 == PushButton
 
-.Syntax
+=== Syntax
 ----
 `PushButton myButton(pinNumber);`
 ----
 
-.Parameters
+=== Parameters
 pinNumber
 
-.Returns
+=== Returns
 void
 
-.Notes
+=== Notes
 Creates a new pushbutton called `myButton` on pin `pinNumber`.
 
 == begin
 
-.Syntax
+=== Syntax
 ----
 `myButton.begin(pinMode);`
 ----
 
-.Parameters
+=== Parameters
 pinMode - the button's I/O pinMode, either INPUT or INPUT_PULLUP 
 
-.Returns
+=== Returns
 void
 
-.Notes
+=== Notes
 Sets the pinMode for the button, and also the pressed and released states. For pinMode INPUT_PULLUP, pressedState is LOW and releasedState is HIGH. For pinMode INPUT, they're reversed.
 
 
 == setDebounce
 
-.Syntax
+=== Syntax
 ----
 `myButton.setDebounce(debounceDelay);`
 ----
 
-.Parameters
+=== Parameters
 debounceDelay 
 
-.Returns
+=== Returns
 void
 
-.Notes
+=== Notes
 sets the delay before reading in `read()`, `changed()`, `pressed()` and `released()`, in milliseconds. Different buttons will have different debounce needs, but 2-10ms seems to cover most of them.
 
 
 == read
 
-.Syntax
+=== Syntax
 ----
 `myButton.read();`
 ----
 
-.Parameters
+=== Parameters
 none 
 
-.Returns
+=== Returns
 1 or 0, HIGH or LOW
 
-.Notes
+=== Notes
 reads the state of the button, and also sets the changed state. If the current read is different than the previous read, then `changed` is set to true.
 
 == changed
 
-.Syntax
+=== Syntax
 ----
 `myButton.changed();`
 ----
 
-.Parameters
+=== Parameters
 none 
 
-.Returns
+=== Returns
 true or false
 
-.Notes
+=== Notes
 reads the state of the button, and returns `true` if the button has changed since last read.
 
 == pressed
 
-.Syntax
+=== Syntax
 ----
 `myButton.pressed();`
 ----
 
-.Parameters
+=== Parameters
 none 
 
-.Returns
+=== Returns
 true or false
 
-.Notes
+=== Notes
 reads the state of the button, and returns `true` if the button has changed to a pressed state. This state is dependent on the pinMode, see `begin` above.
 
 == released
 
-.Syntax
+=== Syntax
 ----
 `myButton.released();`
 ----
 
-.Parameters
+=== Parameters
 none 
 
-.Returns
+=== Returns
 true or false
 
-.Notes
+=== Notes
 reads the state of the button, and returns `true` if the button has changed to a released state. This state is dependent on the pinMode, see `begin` above.
 
 == License ==
